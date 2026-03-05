@@ -1,0 +1,933 @@
+import { Locale } from "./translations";
+
+export type LocalizedString = string | Record<Locale, string>;
+
+export interface MenuItem {
+  code?: string;
+  name: LocalizedString;
+  price: number;
+  priceDose?: number;
+  priceGarrafa?: number;
+  note?: LocalizedString;
+}
+
+export interface MenuCategory {
+  id: string;
+  nameKey: string;
+  hasDoseGarrafa?: boolean;
+  items: MenuItem[];
+}
+
+export const menuCategories: MenuCategory[] = [
+  {
+    id: "cura-ressaca",
+    nameKey: "curaRessaca",
+    items: [
+      {
+        code: "025",
+        name: {
+          "pt-BR": "Caldo de Camarão",
+          en: "Shrimp Broth",
+          es: "Caldo de Camarón",
+          fr: "Bouillon de Crevettes",
+          it: "Brodo di Gamberi",
+        },
+        price: 29.99,
+      },
+      {
+        code: "027",
+        name: {
+          "pt-BR": "Caldo Sertanejo",
+          en: "Sertanejo Broth (Beef)",
+          es: "Caldo Sertanejo (Carne)",
+          fr: "Bouillon Sertanejo (Boeuf)",
+          it: "Brodo Sertanejo (Manzo)",
+        },
+        price: 24.99,
+      },
+      {
+        code: "032",
+        name: {
+          "pt-BR": "Caldinho de Feijoada",
+          en: "Feijoada Bean Broth",
+          es: "Caldo de Feijoada",
+          fr: "Bouillon de Feijoada",
+          it: "Brodo di Feijoada",
+        },
+        price: 15.99,
+      },
+    ],
+  },
+  {
+    id: "tilou-pagou",
+    nameKey: "tilouPagou",
+    items: [
+      {
+        code: "001",
+        name: {
+          "pt-BR": "Filé ao Molho Madeira com Fritas",
+          en: "Steak in Madeira Sauce with Fries",
+          es: "Filete en Salsa Madeira con Papas Fritas",
+          fr: "Steak Sauce Madère avec Frites",
+          it: "Filetto in Salsa Madera con Patatine",
+        },
+        price: 74.99,
+      },
+      {
+        code: "003",
+        name: {
+          "pt-BR": "Filé ao Molho Gorgonzola c/ Fritas",
+          en: "Steak in Gorgonzola Sauce with Fries",
+          es: "Filete en Salsa Gorgonzola con Papas Fritas",
+          fr: "Steak Sauce Gorgonzola avec Frites",
+          it: "Filetto al Gorgonzola con Patatine",
+        },
+        price: 74.99,
+      },
+      {
+        code: "002",
+        name: {
+          "pt-BR": "Picanha com Fritas",
+          en: "Picanha Steak with Fries",
+          es: "Picanha con Papas Fritas",
+          fr: "Picanha avec Frites",
+          it: "Picanha con Patatine",
+        },
+        price: 69.99,
+      },
+      {
+        code: "033",
+        name: {
+          "pt-BR": "Camarão ao Molho Gorgonzola",
+          en: "Shrimp in Gorgonzola Sauce",
+          es: "Camarones en Salsa Gorgonzola",
+          fr: "Crevettes Sauce Gorgonzola",
+          it: "Gamberi in Salsa al Gorgonzola",
+        },
+        price: 74.99,
+      },
+      {
+        code: "000",
+        name: {
+          "pt-BR": "Petiscão do Véi",
+          en: "Old Man's Big Snack Platter",
+          es: "Gran Picada del Viejo",
+          fr: "Grand Plateau Apéro du Vieux",
+          it: "Gran Tagliere del Vecchio",
+        },
+        price: 79.99,
+      },
+      {
+        code: "000",
+        name: {
+          "pt-BR": "Mistão do Mar",
+          en: "Mixed Seafood Platter",
+          es: "Picada Mixta de Mar",
+          fr: "Plateau de Fruits de Mer",
+          it: "Misto Mare",
+        },
+        price: 79.99,
+      },
+      {
+        code: "004",
+        name: {
+          "pt-BR": "Carne de Sol com Macaxeira",
+          en: "Sun-dried Beef with Cassava",
+          es: "Carne de Sol con Yuca",
+          fr: "Boeuf Séché au Soleil et Manioc",
+          it: "Carne Bovina Essiccata con Manioca",
+        },
+        price: 64.99,
+      },
+      {
+        code: "006",
+        name: {
+          "pt-BR": "Camarão Crocante",
+          en: "Crispy Shrimp",
+          es: "Camarones Crujientes",
+          fr: "Crevettes Croustillantes",
+          it: "Gamberi Croccanti",
+        },
+        price: 74.99,
+      },
+      {
+        code: "007",
+        name: {
+          "pt-BR": "Camarão Alho e Óleo com Fritas",
+          en: "Garlic and Oil Shrimp with Fries",
+          es: "Camarones al Ajillo con Papas Fritas",
+          fr: "Crevettes Ail et Huile avec Frites",
+          it: "Gamberi Aglio e Olio con Patatine",
+        },
+        price: 69.99,
+      },
+      {
+        code: "008",
+        name: {
+          "pt-BR": "Isca de Peixe com Fritas",
+          en: "Fried Fish Strips with Fries",
+          es: "Tiras de Pescado con Papas Fritas",
+          fr: "Goujons de Poisson avec Frites",
+          it: "Striscioline di Pesce con Patatine",
+        },
+        price: 54.99,
+      },
+      {
+        code: "040",
+        name: {
+          "pt-BR": "Isca de Frango com Fritas",
+          en: "Fried Chicken Strips with Fries",
+          es: "Tiras de Pollo con Papas Fritas",
+          fr: "Goujons de Poulet avec Frites",
+          it: "Striscioline di Pollo con Patatine",
+        },
+        price: 54.99,
+      },
+      {
+        code: "009",
+        name: {
+          "pt-BR": "Frango à Passarinho com Fritas",
+          en: "Crispy Chicken Bites with Fries",
+          es: "Trozos de Pollo Frito con Papas Fritas",
+          fr: "Morceaux de Pollo Frit avec Frites",
+          it: "Bocconcini di Pollo Pazzo con Patatine",
+        },
+        price: 54.99,
+      },
+      {
+        code: "010",
+        name: {
+          "pt-BR": "Calabresa Acebolada com Fritas",
+          en: "Sausage and Onions with Fries",
+          es: "Salchicha Calabresa con Cebolla y Papas",
+          fr: "Saucisse aux Oignons avec Frites",
+          it: "Salsiccia e Cipolle con Patatine",
+        },
+        price: 54.99,
+      },
+      {
+        code: "018",
+        name: {
+          "pt-BR": "Macaxeira Frita",
+          en: "Fried Cassava",
+          es: "Yuca Frita",
+          fr: "Manioc Frit",
+          it: "Manioca Fritta",
+        },
+        price: 24.99,
+      },
+      {
+        code: "019",
+        name: {
+          "pt-BR": "Batata Frita",
+          en: "French Fries",
+          es: "Papas Fritas",
+          fr: "Frites",
+          it: "Patatine Fritte",
+        },
+        price: 29.99,
+      },
+      {
+        code: "020",
+        name: {
+          "pt-BR": "Escondidinho de Camarão",
+          en: "Shrimp Shepherd's Pie (Cassava Mash)",
+          es: "Pastel de Yuca con Camarón",
+          fr: "Hachis Parmentier de Crevettes",
+          it: "Sformato di Gamberi e Manioca",
+        },
+        price: 34.99,
+      },
+      {
+        code: "021",
+        name: {
+          "pt-BR": "Escondidinho de Carne",
+          en: "Beef Shepherd's Pie (Cassava Mash)",
+          es: "Pastel de Yuca con Carne",
+          fr: "Hachis Parmentier de Boeuf",
+          it: "Sformato di Carne e Manioca",
+        },
+        price: 34.99,
+      },
+      {
+        code: "000",
+        name: {
+          "pt-BR": "Camaroozin do Véi",
+          en: "Little Shrimp Snack",
+          es: "Bocadito de Camarones",
+          fr: "Petites Crevettes Snack",
+          it: "Bocconcini di Gamberi",
+        },
+        price: 19.99,
+      },
+      {
+        code: "000",
+        name: {
+          "pt-BR": "Bolinho Sertanejo",
+          en: "Sertanejo Croquettes (Beef)",
+          es: "Croquetas de Carne",
+          fr: "Croquettes de Boeuf",
+          it: "Crocchette di Carne",
+        },
+        note: {
+          "pt-BR": "Porção 10 und",
+          en: "Portion: 10 units",
+          es: "Porción: 10 und",
+          fr: "Portion 10 unités",
+          it: "Porzione 10 pz",
+        },
+        price: 34.99,
+      },
+      {
+        code: "000",
+        name: {
+          "pt-BR": "Bolinho Pork",
+          en: "Pork Croquettes",
+          es: "Croquetas de Cerdo",
+          fr: "Croquettes de Porc",
+          it: "Crocchette di Maiale",
+        },
+        note: {
+          "pt-BR": "Porção 10 und",
+          en: "Portion: 10 units",
+          es: "Porción: 10 und",
+          fr: "Portion 10 unités",
+          it: "Porzione 10 pz",
+        },
+        price: 34.99,
+      },
+      {
+        code: "000",
+        name: {
+          "pt-BR": "Bolinho Potiguar",
+          en: "Potiguar Croquettes",
+          es: "Croquetas Reionales",
+          fr: "Croquettes Régionales",
+          it: "Crocchette Regionali",
+        },
+        note: {
+          "pt-BR": "Porção 10 und",
+          en: "Portion: 10 units",
+          es: "Porción: 10 und",
+          fr: "Portion 10 unités",
+          it: "Porzione 10 pz",
+        },
+        price: 37.99,
+      },
+      {
+        code: "000",
+        name: {
+          "pt-BR": "Bolinho de Bacalhau",
+          en: "Cod Fish Croquettes",
+          es: "Croquetas de Bacalao",
+          fr: "Croquettes de Morue",
+          it: "Crocchette di Baccalà",
+        },
+        note: {
+          "pt-BR": "Porção 10 und",
+          en: "Portion: 10 units",
+          es: "Porción: 10 und",
+          fr: "Portion 10 unités",
+          it: "Porzione 10 pz",
+        },
+        price: 39.99,
+      },
+    ],
+  },
+  {
+    id: "extras",
+    nameKey: "extras",
+    items: [
+      {
+        code: "991",
+        name: {
+          "pt-BR": "Farofa",
+          en: "Farofa (Cassava flour)",
+          es: "Farofa (Harina de yuca)",
+          fr: "Farofa (Farine de manioc)",
+          it: "Farofa (Farina di manioca)",
+        },
+        price: 4.99,
+      },
+      {
+        code: "992",
+        name: {
+          "pt-BR": "Vinagrete",
+          en: "Vinaigrette",
+          es: "Vinagreta",
+          fr: "Vinaigrette",
+          it: "Vinaigrette",
+        },
+        price: 4.99,
+      },
+      {
+        code: "993",
+        name: {
+          "pt-BR": "Arroz",
+          en: "Rice",
+          es: "Arroz",
+          fr: "Riz",
+          it: "Riso",
+        },
+        price: 9.99,
+      },
+      {
+        code: "000",
+        name: {
+          "pt-BR": "Torradinha",
+          en: "Toast",
+          es: "Tostadas",
+          fr: "Toasts",
+          it: "Crostini",
+        },
+        price: 9.99,
+      },
+    ],
+  },
+  {
+    id: "torando",
+    nameKey: "torando",
+    items: [
+      { code: "069", name: "Spaten 600ml", price: 15.99 },
+      { code: "074", name: "Original 600ml", price: 15.99 },
+      { code: "204", name: "Budweiser 600ml", price: 13.99 },
+      { code: "072", name: "Brahma Duplo Malte 600ml", price: 12.99 },
+      { code: "075", name: "Corona LN", price: 12.99 },
+      { code: "076", name: "Stella LN", price: 11.99 },
+      {
+        code: "077",
+        name: "Stella LN Pure Gold",
+        note: {
+          "pt-BR": "sem glúten",
+          en: "gluten-free",
+          es: "sin gluten",
+          fr: "sans gluten",
+          it: "senza glutine",
+        },
+        price: 11.99,
+      },
+      { code: "078", name: "Spaten LN", price: 10.99 },
+      {
+        code: "079",
+        name: {
+          "pt-BR": "Budweiser Zero Álcool",
+          en: "Budweiser Alcohol-Free",
+          es: "Budweiser Sin Alcohol",
+          fr: "Budweiser Sans Alcool",
+          it: "Budweiser Analcolica",
+        },
+        price: 10.99,
+      },
+      { code: "087", name: "Heineken LN", price: 12.99 },
+    ],
+  },
+  {
+    id: "com-gas",
+    nameKey: "comGas",
+    items: [
+      { code: "080", name: "Coca Cola", price: 7.99 },
+      { code: "081", name: "Coca Cola Zero", price: 7.99 },
+      {
+        code: "082",
+        name: {
+          "pt-BR": "Sukita Laranja",
+          en: "Sukita Orange",
+          es: "Sukita Naranja",
+          fr: "Sukita Orange",
+          it: "Sukita Arancia",
+        },
+        price: 7.99,
+      },
+      {
+        code: "083",
+        name: {
+          "pt-BR": "Sukita Uva",
+          en: "Sukita Grape",
+          es: "Sukita Uva",
+          fr: "Sukita Raisin",
+          it: "Sukita Uva",
+        },
+        price: 7.99,
+      },
+      { code: "084", name: "Soda", price: 7.99 },
+      { code: "085", name: "Guaraná", price: 7.99 },
+      { code: "086", name: "Guaraná Zero", price: 7.99 },
+      { code: "087", name: "Pepsi Black Zero", price: 7.99 },
+    ],
+  },
+  {
+    id: "whisky",
+    nameKey: "whisky",
+    hasDoseGarrafa: true,
+    items: [
+      {
+        code: "091/1091",
+        name: "Black White",
+        priceDose: 14.99,
+        priceGarrafa: 149.99,
+        price: 14.99,
+      },
+      {
+        code: "095/1095",
+        name: "Old Parr",
+        priceDose: 21.99,
+        priceGarrafa: 269.99,
+        price: 21.99,
+      },
+      {
+        code: "092/1092",
+        name: "J. Walker Red",
+        priceDose: 18.99,
+        priceGarrafa: 209.99,
+        price: 18.99,
+      },
+      {
+        code: "093/1093",
+        name: "J. Walker Black",
+        priceDose: 23.99,
+        priceGarrafa: 309.99,
+        price: 23.99,
+      },
+      {
+        code: "000/1103",
+        name: "J. Walker Gold",
+        priceGarrafa: 469.99,
+        price: 0,
+      },
+      { code: "000/298", name: "Royal Salute", priceGarrafa: 1750.0, price: 0 },
+    ],
+  },
+  {
+    id: "esquenta-urea",
+    nameKey: "esquentaUrea",
+    hasDoseGarrafa: true,
+    items: [
+      {
+        code: "142",
+        name: "Seleta",
+        priceDose: 11.99,
+        priceGarrafa: 79.99,
+        price: 11.99,
+      },
+      {
+        code: "143",
+        name: "Samanaú Prata",
+        priceDose: 10.99,
+        priceGarrafa: 69.99,
+        price: 10.99,
+      },
+      {
+        code: "144",
+        name: "Samanaú Ouro",
+        priceDose: 10.99,
+        priceGarrafa: 69.99,
+        price: 10.99,
+      },
+      {
+        code: "145",
+        name: "Sagatiba",
+        priceDose: 10.99,
+        priceGarrafa: 79.99,
+        price: 10.99,
+      },
+    ],
+  },
+  {
+    id: "drinks",
+    nameKey: "drinks",
+    items: [
+      { code: "120", name: "Caipirinha", price: 15.99 },
+      {
+        code: "126",
+        name: {
+          "pt-BR": "Caipirinha Cachaça Especial",
+          en: "Caipirinha with Special Cachaça",
+          es: "Caipirinha con Cachaça Especial",
+          fr: "Caipirinha à la Cachaça Spéciale",
+          it: "Caipirinha con Cachaça Speciale",
+        },
+        price: 17.99,
+      },
+      {
+        code: "000",
+        name: {
+          "pt-BR": "Caipiroska (Vodka Nacional)",
+          en: "Caipiroska (Local Vodka)",
+          es: "Caipiroska (Vodka Nacional)",
+          fr: "Caipiroska (Vodka Locale)",
+          it: "Caipiroska (Vodka Nazionale)",
+        },
+        price: 17.99,
+      },
+      { code: "123", name: "Caipiroska (Vodka Smirnoff)", price: 19.99 },
+      {
+        code: "124",
+        name: {
+          "pt-BR": "Caipiroska (Vodka Importada)",
+          en: "Caipiroska (Imported Vodka)",
+          es: "Caipiroska (Vodka Importada)",
+          fr: "Caipiroska (Vodka Importée)",
+          it: "Caipiroska (Vodka Importata)",
+        },
+        price: 22.99,
+      },
+      {
+        code: "000",
+        name: {
+          "pt-BR": "Caipifruta (Vodka Nacional)",
+          en: "Caipifruta (Local Vodka)",
+          es: "Caipifruta (Vodka Nacional)",
+          fr: "Caipifruta (Vodka Locale)",
+          it: "Caipifruta (Vodka Nazionale)",
+        },
+        price: 20.99,
+      },
+      { code: "125", name: "Caipifruta (Vodka Smirnoff)", price: 22.99 },
+      {
+        code: "129",
+        name: {
+          "pt-BR": "Caipifruta (Vodka Importada)",
+          en: "Caipifruta (Imported Vodka)",
+          es: "Caipifruta (Vodka Importada)",
+          fr: "Caipifruta (Vodka Importée)",
+          it: "Caipifruta (Vodka Importata)",
+        },
+        price: 25.99,
+      },
+      {
+        code: "130",
+        name: {
+          "pt-BR": "Caipifruta Sem Álcool",
+          en: "Non-Alcoholic Caipifruta",
+          es: "Caipifruta Sin Alcohol",
+          fr: "Caipifruta Sans Alcool",
+          it: "Caipifruta Analcolica",
+        },
+        price: 17.99,
+      },
+      {
+        code: "133",
+        name: "Mojito",
+        note: {
+          "pt-BR": "Bacardi, Hortelã e Água com Gás",
+          en: "Bacardi, Mint, and Sparkling Water",
+          es: "Bacardi, Menta y Agua Con Gas",
+          fr: "Bacardi, Menthe et Eau Gazeuse",
+          it: "Bacardi, Menta e Acqua Frizzante",
+        },
+        price: 18.99,
+      },
+      {
+        code: "122",
+        name: "Smirnoff Tônica",
+        note: {
+          "pt-BR": "Smirnoff, Tônica e Limão Siciliano",
+          en: "Smirnoff, Tonic Water and Sicilian Lemon",
+          es: "Smirnoff, Tónica y Limón Siciliano",
+          fr: "Smirnoff, Tonic et Citron Jaune",
+          it: "Smirnoff, Tonica e Limone Siciliano",
+        },
+        price: 26.99,
+      },
+      {
+        code: "135",
+        name: "Tanqueray Drink",
+        note: {
+          "pt-BR": "Tanqueray, Tônica e Limão Siciliano",
+          en: "Tanqueray, Tonic Water and Sicilian Lemon",
+          es: "Tanqueray, Tónica y Limón Siciliano",
+          fr: "Tanqueray, Tonic et Citron Jaune",
+          it: "Tanqueray, Tonica e Limone Siciliano",
+        },
+        price: 24.99,
+      },
+      {
+        code: "127",
+        name: "Tropical Gin",
+        note: {
+          "pt-BR": "Gin, Redbull Tropical e Laranja",
+          en: "Gin, Tropical Redbull, and Orange",
+          es: "Gin, Redbull Tropical y Naranja",
+          fr: "Gin, Redbull Tropical et Orange",
+          it: "Gin, Redbull Tropical e Arancia",
+        },
+        price: 34.99,
+      },
+      {
+        code: "195",
+        name: "Americano",
+        note: {
+          "pt-BR": "Cerveja Long Neck e Caipifruta",
+          en: "Long Neck Beer and Caipifruta",
+          es: "Cerveza Long Neck y Caipifruta",
+          fr: "Bière Long Neck et Caipifruta",
+          it: "Birra Long Neck e Caipifruta",
+        },
+        price: 34.99,
+      },
+      {
+        code: "197",
+        name: "Sex on the Beach",
+        note: {
+          "pt-BR": "Vodka, Suco de Laranja, Licor de Pessêgo e Groselha",
+          en: "Vodka, Orange Juice, Peach Schnapps, and Cranberry",
+          es: "Vodka, Jugo de Naranja, Licor de Durazno y Grosella",
+          fr: "Vodka, Jus d'Orange, Liqueur de Pêche et Groseille",
+          it: "Vodka, Succo d'Arancia, Liquore alla Pesca e Ribes",
+        },
+        price: 29.99,
+      },
+      {
+        code: "198",
+        name: "Melancita",
+        note: {
+          "pt-BR": "Gin, Redbull, Melancia e Hortelã",
+          en: "Gin, Redbull, Watermelon, and Mint",
+          es: "Gin, Redbull, Sandía y Menta",
+          fr: "Gin, Redbull, Pastèque et Menthe",
+          it: "Gin, Redbull, Anguria e Menta",
+        },
+        price: 34.99,
+      },
+    ],
+  },
+  {
+    id: "para-dividir",
+    nameKey: "paraDividir",
+    items: [
+      { code: "150", name: "J. Walker Red + 2 Red Bull's", price: 229.99 },
+      { code: "151", name: "Old Parr + 2 Red Bull's", price: 289.99 },
+      { code: "152", name: "Black White + 2 Red Bull's", price: 169.99 },
+      { code: "153", name: "Smirnoff + 2 Red Bull's", price: 149.99 },
+      { code: "154", name: "Absolut + 2 Red Bull's", price: 259.99 },
+      { code: "155", name: "Ciroc + 2 Red Bull's", price: 289.99 },
+    ],
+  },
+  {
+    id: "tequila",
+    nameKey: "tequila",
+    items: [
+      {
+        code: "170",
+        name: {
+          "pt-BR": "Tequila Ouro",
+          en: "Gold Tequila",
+          es: "Tequila Oro",
+          fr: "Tequila Or",
+          it: "Tequila Oro",
+        },
+        price: 24.99,
+      },
+      {
+        code: "171",
+        name: {
+          "pt-BR": "Tequila Prata",
+          en: "Silver Tequila",
+          es: "Tequila Plata",
+          fr: "Tequila Argent",
+          it: "Tequila Argento",
+        },
+        price: 24.99,
+      },
+    ],
+  },
+  {
+    id: "dose-pro-santo",
+    nameKey: "doseProSanto",
+    items: [
+      { code: "110", name: "Montila Carta Branca", price: 10.99 },
+      { code: "111", name: "Montila Cristal", price: 10.99 },
+      { code: "112", name: "Bacardi Carta Branca", price: 10.99 },
+      { code: "114", name: "Conhaque Domeq", price: 10.99 },
+      { code: "115", name: "Campari", price: 10.99 },
+      { code: "116", name: "Martini Bianco", price: 10.99 },
+      { code: "117", name: "Martini Rosé", price: 10.99 },
+    ],
+  },
+  {
+    id: "vodka-e-gin",
+    nameKey: "vodkaEGin",
+    items: [
+      { code: "166", name: "Smirnoff Ice", price: 15.99 },
+      { code: "166", name: "Beats Senses", price: 15.99 },
+      {
+        code: "161",
+        name: { "pt-BR": "Smirnoff (Dose)", en: "Smirnoff (Shot)", es: "Smirnoff (Dosis)", fr: "Smirnoff (Dose)", it: "Smirnoff (Dose)" },
+        price: 14.99,
+      },
+      {
+        code: "162",
+        name: { "pt-BR": "Smirnoff (Garrafa)", en: "Smirnoff (Bottle)", es: "Smirnoff (Botella)", fr: "Smirnoff (Bouteille)", it: "Smirnoff (Bottiglia)" },
+        price: 124.99,
+      },
+      {
+        code: "163",
+        name: { "pt-BR": "Absolut (Dose)", en: "Absolut (Shot)", es: "Absolut (Dosis)", fr: "Absolut (Dose)", it: "Absolut (Dose)" },
+        price: 21.99,
+      },
+      {
+        code: "164",
+        name: { "pt-BR": "Absolut (Garrafa)", en: "Absolut (Bottle)", es: "Absolut (Botella)", fr: "Absolut (Bouteille)", it: "Absolut (Bottiglia)" },
+        price: 239.99,
+      },
+      {
+        code: "165",
+        name: { "pt-BR": "Ciroc (Garrafa)", en: "Ciroc (Bottle)", es: "Ciroc (Botella)", fr: "Ciroc (Bouteille)", it: "Ciroc (Bottiglia)" },
+        price: 269.99,
+      },
+      {
+        code: "131",
+        name: { "pt-BR": "Tanqueray (Dose)", en: "Tanqueray (Shot)", es: "Tanqueray (Dosis)", fr: "Tanqueray (Dose)", it: "Tanqueray (Dose)" },
+        price: 21.99,
+      },
+      {
+        code: "137",
+        name: { "pt-BR": "Tanqueray (Garrafa)", en: "Tanqueray (Bottle)", es: "Tanqueray (Botella)", fr: "Tanqueray (Bouteille)", it: "Tanqueray (Bottiglia)" },
+        price: 269.99,
+      },
+      {
+        code: "132",
+        name: { "pt-BR": "Gin Nacional (Dose)", en: "Gin Nacional (Shot)", es: "Gin Nacional (Dosis)", fr: "Gin Nacional (Dose)", it: "Gin Nacional (Dose)" },
+        price: 14.99,
+      },
+
+    ],
+  },
+  {
+    id: "desentalo",
+    nameKey: "desentalo",
+    items: [
+      {
+        code: "101",
+        name: {
+          "pt-BR": "Água Sem Gás",
+          en: "Still Water",
+          es: "Agua Sin Gas",
+          fr: "Eau Plate",
+          it: "Acqua Naturale",
+        },
+        price: 6.99,
+      },
+      {
+        code: "102",
+        name: {
+          "pt-BR": "Água Com Gás",
+          en: "Sparkling Water",
+          es: "Agua Con Gas",
+          fr: "Eau Gazeuse",
+          it: "Acqua Frizzante",
+        },
+        price: 6.99,
+      },
+      {
+        code: "103",
+        name: {
+          "pt-BR": "Água de Coco",
+          en: "Coconut Water",
+          es: "Agua de Coco",
+          fr: "Eau de Coco",
+          it: "Acqua di Cocco",
+        },
+        price: 7.99,
+      },
+      {
+        code: "105",
+        name: {
+          "pt-BR": "Suco Copo",
+          en: "Juice (Glass)",
+          es: "Jugo (Vaso)",
+          fr: "Jus (Verre)",
+          it: "Succo (Bicchiere)",
+        },
+        note: {
+          "pt-BR": "consultar sabores",
+          en: "ask for flavors",
+          es: "consultar sabores",
+          fr: "demander les saveurs",
+          it: "chiedi i sabori",
+        },
+        price: 12.99,
+      },
+      {
+        code: "106",
+        name: {
+          "pt-BR": "Suco Jarra",
+          en: "Juice (Pitcher)",
+          es: "Jugo (Jarra)",
+          fr: "Jus (Carafe)",
+          it: "Succo (Caraffa)",
+        },
+        note: {
+          "pt-BR": "consultar sabores",
+          en: "ask for flavors",
+          es: "consultar sabores",
+          fr: "demander les saveurs",
+          it: "chiedi i sabori",
+        },
+        price: 20.99,
+      },
+      { code: "182", name: "Tônica Antártica", price: 8.99 },
+      { code: "107", name: "Schweppes Citrus", price: 9.99 },
+      { code: "100", name: "Red Bull", price: 18.99 },
+      { code: "183", name: "Redbull Tropical / Melancia", price: 20.99 },
+    ],
+  },
+];
+
+export const businessInfo = {
+  name: "Seu Chico Botequim",
+  hours: [
+    {
+      days: {
+        "pt-BR": "Seg | Qua | Qui",
+        en: "Mon | Wed | Thu",
+        es: "Lun | Mié | Jue",
+        fr: "Lun | Mer | Jeu",
+        it: "Lun | Mer | Gio",
+      },
+      time: {
+        "pt-BR": "17:00 às 01:00",
+        en: "5:00 PM to 1:00 AM",
+        es: "17:00 a 01:00",
+        fr: "17h00 à 01h00",
+        it: "17:00 alle 01:00",
+      },
+    },
+    {
+      days: {
+        "pt-BR": "Sextas e Sábados",
+        en: "Fridays and Saturdays",
+        es: "Viernes y Sábados",
+        fr: "Vendredis et Samedis",
+        it: "Venerdì e Sabato",
+      },
+      time: {
+        "pt-BR": "17:00 às 02:00",
+        en: "5:00 PM to 2:00 AM",
+        es: "17:00 a 02:00",
+        fr: "17h00 à 02h00",
+        it: "17:00 alle 02:00",
+      },
+    },
+    {
+      days: {
+        "pt-BR": "Domingos e Feriados",
+        en: "Sundays and Holidays",
+        es: "Domingos y Festivos",
+        fr: "Dimanches et Jours Fériés",
+        it: "Domeniche e Festivi",
+      },
+      time: {
+        "pt-BR": "12:00 às 00:00",
+        en: "12:00 PM to 12:00 AM",
+        es: "12:00 a 00:00",
+        fr: "12h00 à 00h00",
+        it: "12:00 alle 00:00",
+      },
+    },
+  ],
+  couvert: { regular: 12.0, special: 15.0 },
+  serviceFee: 10,
+  acceptedCards: ["visa", "mastercard", "hipercard", "elo"],
+  noChecks: true,
+};
