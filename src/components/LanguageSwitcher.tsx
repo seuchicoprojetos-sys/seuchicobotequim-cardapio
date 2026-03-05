@@ -33,7 +33,7 @@ export default function LanguageSwitcher() {
             alt="" 
             className="w-4 h-3 object-cover rounded-[1px] shadow-xs"
           />
-          <span className="font-heading font-bold tracking-wider">{l.label}</span>
+          <span className="hidden sm:inline font-heading font-bold tracking-wider">{l.label}</span>
         </button>
       ))}
     </div>

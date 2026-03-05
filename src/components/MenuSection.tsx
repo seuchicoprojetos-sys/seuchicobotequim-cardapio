@@ -32,7 +32,7 @@ function MenuItemRow({
       <div className="flex-1 min-w-0 overflow-hidden">
         <div className="flex items-baseline gap-2 flex-wrap">
           {item.code && (
-            <span className="text-white text-[10px] font-bold shrink-0 bg-botequim-highlight px-1.5 py-0.5 rounded-[4px] shadow-sm">
+            <span className="text-[#7C3A00] text-[10px] font-bold shrink-0 bg-botequim-highlight px-1.5 py-0.5 rounded-[4px] shadow-sm">
               {item.code}
             </span>
           )}
