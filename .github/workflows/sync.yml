@@ -2,7 +2,7 @@ name: Sync to Seuchico
 on:
   push:
     branches:
-      - master  # Ajustado conforme seu print
+      - master
 
 jobs:
   git-sync:
@@ -15,8 +15,8 @@ jobs:
 
       - name: Push to mirror
         run: |
-          # Adicionando o repositório de destino correto
-          git remote add mirror https://${{ secrets.SYNC_TOKEN }}@github.com/seuchico/seuchicobotequim-cardapio.git
+          # URL atualizada com o perfil correto: seuchicoprojetos-sys
+          git remote add mirror https://${{ secrets.SYNC_TOKEN }}@github.com/seuchicoprojetos-sys/seuchicobotequim-cardapio.git
           
-          # Sincroniza a branch master e força a paridade entre os repositórios
+          # Força a sincronização da branch master
           git push --force --prune mirror refs/remotes/origin/master:refs/heads/master
