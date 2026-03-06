@@ -12,14 +12,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          persist-credentials: false # <--- ISSO IMPEDE O USO DO BOT PADRÃO
 
       - name: Push to mirror
         run: |
-          # Remove o remote antigo para evitar conflito
-          git remote remove mirror || true
-          
-          # Adiciona o remote usando o token de forma explícita
-          git remote add mirror https://x-access-token:${{ secrets.SYNC_TOKEN }}@github.com/seuchicoprojetos-sys/seuchicobotequim-cardapio.git
-          
-          # Faz o push ignorando verificações de e-mail do servidor
-          git push --force mirror master
+          git remote add mirror https://${{ secrets.SYNC_TOKEN }}@github.com/seuchicoprojetos-sys/seuchicobotequim-cardapio.git
+          git push --force --prune mirror refs/remotes/origin/master:refs/heads/master
