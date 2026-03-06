@@ -1,20 +1,47 @@
-name: Sync to Seuchico
+name: Sync to Mirror (via PR)
 on:
   push:
     branches:
-      - master
+      - master # Branch principal da origem
 
 jobs:
-  git-sync:
+  create-pr-sync:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          persist-credentials: false # <--- ISSO IMPEDE O USO DO BOT PADRÃO
+          # IMPORTANTE: Desativa o bot padrão da origem para evitar erro 403 no destino
+          persist-credentials: false 
 
-      - name: Push to mirror
+      - name: Push to staging branch
         run: |
+          # Adiciona o remote de destino injetando o Token Clássico
           git remote add mirror https://${{ secrets.SYNC_TOKEN }}@github.com/seuchicoprojetos-sys/seuchicobotequim-cardapio.git
-          git push --force --prune mirror refs/remotes/origin/master:refs/heads/master
+          
+          # Envia o código forçando a atualização de uma branch temporária ('sync-update') no destino
+          git push --force mirror HEAD:refs/heads/sync-update
+
+      - name: Create or Update Pull Request
+        env:
+          GH_TOKEN: ${{ secrets.SYNC_TOKEN }}
+        run: |
+          # Define o repositório alvo para o GitHub CLI
+          gh repo set-default seuchicoprojetos-sys/seuchicobotequim-cardapio
+          
+          # Verifica se já existe um PR aberto originado da branch 'sync-update'
+          PR_EXISTS=$(gh pr list --head sync-update --base master --json number -q 'length')
+          
+          if [ "$PR_EXISTS" -eq "0" ]; then
+            # Se não existir, cria um novo PR
+            gh pr create \
+              --title "🔄 Atualização do repositório original" \
+              --body "Este Pull Request foi gerado automaticamente pelo GitHub Actions. Revise e aprove as alterações para disparar o deploy em produção." \
+              --head sync-update \
+              --base master
+            echo "Pull Request criado com sucesso!"
+          else
+            # Se já existir, o push anterior já atualizou o código do PR aberto automaticamente
+            echo "Um Pull Request já está aberto. Os novos commits foram adicionados a ele!"
+          fi
