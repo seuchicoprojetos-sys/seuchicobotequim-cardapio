@@ -1,0 +1,22 @@
+name: Sync to Seuchico
+on:
+  push:
+    branches:
+      - master  # Ajustado conforme seu print
+
+jobs:
+  git-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Push to mirror
+        run: |
+          # Adicionando o repositório de destino correto
+          git remote add mirror https://${{ secrets.SYNC_TOKEN }}@github.com/seuchico/seuchicobotequim-cardapio.git
+          
+          # Sincroniza a branch master e força a paridade entre os repositórios
+          git push --force --prune mirror refs/remotes/origin/master:refs/heads/master
