@@ -15,10 +15,7 @@ jobs:
 
       - name: Push to mirror
         run: |
-          # Removendo qualquer mirror anterior para garantir a atualização
-          git remote remove mirror || true
-          
-          # Usando o formato de autenticação direta via Header/Token
+          git config --global user.email "pedronascimento@exemplo.com"
+          git config --global user.name "Pedro Nascimento"
           git remote add mirror https://x-access-token:${{ secrets.SYNC_TOKEN }}@github.com/seuchicoprojetos-sys/seuchicobotequim-cardapio.git
-          
-          git push --force --prune mirror refs/remotes/origin/master:refs/heads/master
+          git push --force mirror master
