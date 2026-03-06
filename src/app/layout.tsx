@@ -3,6 +3,7 @@ import { Nunito, Caveat_Brush, Bebas_Neue, Montserrat } from "next/font/google";
 import Image from "next/image";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { Analytics } from "@vercel/analytics/react";
 
 const bebas = Bebas_Neue({
   weight: "400",
@@ -70,6 +71,7 @@ export default function RootLayout({
           />
         </div>
         <LanguageProvider>{children}</LanguageProvider>
+        <Analytics />
       </body>
     </html>
   );
