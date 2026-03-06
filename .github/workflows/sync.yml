@@ -15,7 +15,11 @@ jobs:
 
       - name: Push to mirror
         run: |
-          git config --global user.email "pedronascimento@exemplo.com"
-          git config --global user.name "Pedro Nascimento"
+          # Remove o remote antigo para evitar conflito
+          git remote remove mirror || true
+          
+          # Adiciona o remote usando o token de forma explícita
           git remote add mirror https://x-access-token:${{ secrets.SYNC_TOKEN }}@github.com/seuchicoprojetos-sys/seuchicobotequim-cardapio.git
+          
+          # Faz o push ignorando verificações de e-mail do servidor
           git push --force mirror master
