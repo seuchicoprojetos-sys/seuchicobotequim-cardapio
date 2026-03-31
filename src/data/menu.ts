@@ -32,7 +32,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "Bouillon de Crevettes",
           it: "Brodo di Gamberi",
         },
-        price: 29.99,
+        price: 39.99,
       },
       {
         code: "027",
