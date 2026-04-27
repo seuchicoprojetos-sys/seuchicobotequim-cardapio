@@ -11,10 +11,19 @@ export interface MenuItem {
   note?: LocalizedString;
 }
 
+export interface PromotionSchedule {
+  weekdays: LocalizedString;
+  weekdaysUntil: LocalizedString;
+  weekends: LocalizedString;
+  weekendsUntil: LocalizedString;
+  disclaimer?: LocalizedString;
+}
+
 export interface MenuCategory {
   id: string;
   nameKey: string;
   hasDoseGarrafa?: boolean;
+  promotionSchedule?: PromotionSchedule;
   items: MenuItem[];
 }
 
@@ -32,7 +41,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "Bouillon de Crevettes",
           it: "Brodo di Gamberi",
         },
-        price: 29.99,
+        price: 34.99,
       },
       {
         code: "027",
@@ -43,7 +52,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "Bouillon Sertanejo (Boeuf)",
           it: "Brodo Sertanejo (Manzo)",
         },
-        price: 24.99,
+        price: 29.99,
       },
       {
         code: "032",
@@ -54,7 +63,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "Bouillon de Feijoada",
           it: "Brodo di Feijoada",
         },
-        price: 15.99,
+        price: 19.99,
       },
     ],
   },
@@ -78,7 +87,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "300g de protéine + 250g de frites",
           it: "300g di proteine + 250g di patatine",
         },
-        price: 74.99,
+        price: 79.99,
       },
       {
         code: "003",
@@ -96,7 +105,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "300g de protéine + 250g de frites",
           it: "300g di proteine + 250g di patatine",
         },
-        price: 74.99,
+        price: 84.99,
       },
       {
         code: "002",
@@ -114,7 +123,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "300g de protéine + 250g de frites",
           it: "300g di proteine + 250g di patatine",
         },
-        price: 69.99,
+        price: 89.99,
       },
       {
         code: "033",
@@ -132,7 +141,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "300g de protéine + 250g de frites",
           it: "300g di proteine + 250g di patatine",
         },
-        price: 74.99,
+        price: 84.99,
       },
       {
         code: "000",
@@ -150,7 +159,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "300g de protéine + 250g de frites",
           it: "300g di proteine + 250g di patatine",
         },
-        price: 79.99,
+        price: 89.99,
       },
       {
         code: "000",
@@ -168,7 +177,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "300g de protéine + 250g de frites",
           it: "300g di proteine + 250g di patatine",
         },
-        price: 79.99,
+        price: 89.99,
       },
       {
         code: "004",
@@ -186,7 +195,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "300g de protéine + 250g de frites",
           it: "300g di proteine + 250g di patatine",
         },
-        price: 64.99,
+        price: 69.99,
       },
       {
         code: "006",
@@ -204,7 +213,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "300g de protéine + 250g de frites",
           it: "300g di proteine + 250g di patatine",
         },
-        price: 74.99,
+        price: 79.99,
       },
       {
         code: "007",
@@ -222,7 +231,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "300g de protéine + 250g de frites",
           it: "300g di proteine + 250g di patatine",
         },
-        price: 69.99,
+        price: 74.99,
       },
       {
         code: "008",
@@ -240,7 +249,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "300g de protéine + 250g de frites",
           it: "300g di proteine + 250g di patatine",
         },
-        price: 54.99,
+        price: 74.99,
       },
       {
         code: "040",
@@ -258,7 +267,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "300g de protéine + 250g de frites",
           it: "300g di proteine + 250g di patatine",
         },
-        price: 54.99,
+        price: 64.99,
       },
       {
         code: "009",
@@ -276,7 +285,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "300g de protéine + 250g de frites",
           it: "300g di proteine + 250g di patatine",
         },
-        price: 54.99,
+        price: 59.99,
       },
       {
         code: "010",
@@ -294,7 +303,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "300g de protéine + 250g de frites",
           it: "300g di proteine + 250g di patatine",
         },
-        price: 54.99,
+        price: 59.99,
       },
       {
         code: "018",
@@ -312,7 +321,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "portion de 500g",
           it: "porzione da 500g",
         },
-        price: 24.99,
+        price: 29.99,
       },
       {
         code: "019",
@@ -330,7 +339,18 @@ export const menuCategories: MenuCategory[] = [
           fr: "portion de 500g",
           it: "porzione da 500g",
         },
-        price: 29.99,
+        price: 34.99,
+      },
+      {
+        code: "000",
+        name: {
+          "pt-BR": "Batata Cheddar Bacon",
+          en: "Bacon Cheddar Fries",
+          es: "Papas con Cheddar y Bacon",
+          fr: "Frites Cheddar Bacon",
+          it: "Patatine con Cheddar e Bacon",
+        },
+        price: 44.99,
       },
       {
         code: "020",
@@ -341,7 +361,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "Hachis Parmentier de Crevettes",
           it: "Sformato di Gamberi e Manioca",
         },
-        price: 34.99,
+        price: 39.99,
       },
       {
         code: "021",
@@ -363,7 +383,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "Petites Crevettes Snack",
           it: "Bocconcini di Gamberi",
         },
-        price: 19.99,
+        price: 24.99,
       },
       {
         code: "000",
@@ -381,7 +401,18 @@ export const menuCategories: MenuCategory[] = [
           fr: "Portion 10 unités",
           it: "Porzione 10 pz",
         },
-        price: 34.99,
+        price: 39.99,
+      },
+      {
+        code: "000",
+        name: {
+          "pt-BR": "Queijin Crocante do Véi",
+          en: "Crispy Cheese Bites",
+          es: "Bocaditos de Queso Crujiente",
+          fr: "Bouchées de Fromage Croustillant",
+          it: "Bocconcini di Formaggio Croccante",
+        },
+        price: 49.99,
       },
       {
         code: "000",
@@ -487,18 +518,29 @@ export const menuCategories: MenuCategory[] = [
         },
         price: 9.99,
       },
+      {
+        code: "000",
+        name: {
+          "pt-BR": "Molho da Casa",
+          en: "House Sauce",
+          es: "Salsa de la Casa",
+          fr: "Sauce Maison",
+          it: "Salsa della Casa",
+        },
+        price: 4.99,
+      },
     ],
   },
   {
     id: "torando",
     nameKey: "torando",
     items: [
-      { code: "069", name: "Spaten 600ml", price: 15.99 },
-      { code: "074", name: "Original 600ml", price: 15.99 },
-      { code: "204", name: "Budweiser 600ml", price: 13.99 },
-      { code: "072", name: "Brahma Duplo Malte 600ml", price: 12.99 },
-      { code: "075", name: "Corona LN", price: 12.99 },
-      { code: "076", name: "Stella LN", price: 11.99 },
+      { code: "069", name: "Stella Artois 600ml", price: 18.99 },
+      { code: "074", name: "Original 600ml", price: 16.99 },
+      { code: "204", name: "Budweiser 600ml", price: 16.99 },
+      { code: "072", name: "Brahma Duplo Malte 600ml", price: 14.99 },
+      { code: "075", name: "Corona LN", price: 13.99 },
+      { code: "076", name: "Stella LN", price: 12.99 },
       {
         code: "077",
         name: "Stella LN Pure Gold",
@@ -509,29 +551,21 @@ export const menuCategories: MenuCategory[] = [
           fr: "sans gluten",
           it: "senza glutine",
         },
-        price: 11.99,
+        price: 13.99,
       },
-      { code: "078", name: "Spaten LN", price: 10.99 },
-      {
-        code: "079",
-        name: {
-          "pt-BR": "Budweiser Zero Álcool",
-          en: "Budweiser Alcohol-Free",
-          es: "Budweiser Sin Alcohol",
-          fr: "Budweiser Sans Alcool",
-          it: "Budweiser Analcolica",
-        },
-        price: 10.99,
-      },
-      { code: "087", name: "Heineken LN", price: 12.99 },
+      { code: "078", name: "Spaten LN", price: 11.99 },
+      { code: "079", name: "Budweiser LN", price: 11.99 },
+      { code: "087", name: "Heineken LN", price: 13.99 },
+      { code: "000", name: "Heineken Zero LN", price: 14.99 },
+      { code: "000", name: "Corona Zero LN", price: 14.99 },
     ],
   },
   {
     id: "com-gas",
     nameKey: "comGas",
     items: [
-      { code: "080", name: "Coca Cola", price: 7.99 },
-      { code: "081", name: "Coca Cola Zero", price: 7.99 },
+      { code: "080", name: "Coca Cola", price: 8.99 },
+      { code: "081", name: "Coca Cola Zero", price: 8.99 },
       {
         code: "082",
         name: {
@@ -541,7 +575,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "Sukita Orange",
           it: "Sukita Arancia",
         },
-        price: 7.99,
+        price: 8.99,
       },
       {
         code: "083",
@@ -552,12 +586,12 @@ export const menuCategories: MenuCategory[] = [
           fr: "Sukita Raisin",
           it: "Sukita Uva",
         },
-        price: 7.99,
+        price: 8.99,
       },
-      { code: "084", name: "Soda", price: 7.99 },
-      { code: "085", name: "Guaraná", price: 7.99 },
-      { code: "086", name: "Guaraná Zero", price: 7.99 },
-      { code: "087", name: "Pepsi Black Zero", price: 7.99 },
+      { code: "084", name: "Soda", price: 8.99 },
+      { code: "085", name: "Guaraná", price: 8.99 },
+      { code: "086", name: "Guaraná Zero", price: 8.99 },
+      { code: "087", name: "Pepsi Black Zero", price: 8.99 },
     ],
   },
   {
@@ -568,38 +602,38 @@ export const menuCategories: MenuCategory[] = [
       {
         code: "091/1091",
         name: "Black White",
-        priceDose: 14.99,
-        priceGarrafa: 149.99,
-        price: 14.99,
+        priceDose: 15.99,
+        priceGarrafa: 169.99,
+        price: 15.99,
       },
       {
         code: "095/1095",
         name: "Old Parr",
-        priceDose: 21.99,
-        priceGarrafa: 269.99,
-        price: 21.99,
+        priceDose: 24.99,
+        priceGarrafa: 289.99,
+        price: 24.99,
       },
       {
         code: "092/1092",
         name: "J. Walker Red",
-        priceDose: 18.99,
-        priceGarrafa: 209.99,
-        price: 18.99,
+        priceDose: 19.99,
+        priceGarrafa: 219.99,
+        price: 19.99,
       },
       {
         code: "093/1093",
         name: "J. Walker Black",
-        priceDose: 23.99,
-        priceGarrafa: 309.99,
-        price: 23.99,
+        priceDose: 29.99,
+        priceGarrafa: 319.99,
+        price: 29.99,
       },
       {
         code: "000/1103",
         name: "J. Walker Gold",
-        priceGarrafa: 469.99,
+        priceGarrafa: 499.99,
         price: 0,
       },
-      { code: "000/298", name: "Royal Salute", priceGarrafa: 1750.0, price: 0 },
+      { code: "000/298", name: "Royal Salute", priceGarrafa: 1799.0, price: 0 },
     ],
   },
   {
@@ -610,30 +644,30 @@ export const menuCategories: MenuCategory[] = [
       {
         code: "142",
         name: "Seleta",
+        priceDose: 12.99,
+        priceGarrafa: 79.99,
+        price: 12.99,
+      },
+      {
+        code: "143",
+        name: "Samanaú Prata",
         priceDose: 11.99,
         priceGarrafa: 79.99,
         price: 11.99,
       },
       {
-        code: "143",
-        name: "Samanaú Prata",
-        priceDose: 10.99,
-        priceGarrafa: 69.99,
-        price: 10.99,
-      },
-      {
         code: "144",
         name: "Samanaú Ouro",
-        priceDose: 10.99,
-        priceGarrafa: 69.99,
-        price: 10.99,
+        priceDose: 11.99,
+        priceGarrafa: 79.99,
+        price: 11.99,
       },
       {
         code: "145",
         name: "Sagatiba",
-        priceDose: 10.99,
-        priceGarrafa: 79.99,
-        price: 10.99,
+        priceDose: 11.99,
+        priceGarrafa: 89.99,
+        price: 11.99,
       },
     ],
   },
@@ -641,7 +675,7 @@ export const menuCategories: MenuCategory[] = [
     id: "drinks",
     nameKey: "drinks",
     items: [
-      { code: "120", name: "Caipirinha", price: 15.99 },
+      { code: "120", name: "Caipirinha", price: 16.99 },
       {
         code: "126",
         name: {
@@ -651,7 +685,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "Caipirinha à la Cachaça Spéciale",
           it: "Caipirinha con Cachaça Speciale",
         },
-        price: 17.99,
+        price: 18.99,
       },
       {
         code: "000",
@@ -662,9 +696,9 @@ export const menuCategories: MenuCategory[] = [
           fr: "Caipiroska (Vodka Locale)",
           it: "Caipiroska (Vodka Nazionale)",
         },
-        price: 17.99,
+        price: 18.99,
       },
-      { code: "123", name: "Caipiroska (Vodka Smirnoff)", price: 19.99 },
+      { code: "123", name: "Caipiroska (Vodka Smirnoff)", price: 20.99 },
       {
         code: "124",
         name: {
@@ -674,7 +708,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "Caipiroska (Vodka Importée)",
           it: "Caipiroska (Vodka Importata)",
         },
-        price: 22.99,
+        price: 23.99,
       },
       {
         code: "000",
@@ -685,9 +719,20 @@ export const menuCategories: MenuCategory[] = [
           fr: "Caipifruta (Vodka Locale)",
           it: "Caipifruta (Vodka Nazionale)",
         },
-        price: 20.99,
+        price: 21.99,
       },
-      { code: "125", name: "Caipifruta (Vodka Smirnoff)", price: 22.99 },
+      {
+        code: "000",
+        name: {
+          "pt-BR": "Caipifruta (Pitú)",
+          en: "Caipifruta (Pitú)",
+          es: "Caipifruta (Pitú)",
+          fr: "Caipifruta (Pitú)",
+          it: "Caipifruta (Pitú)",
+        },
+        price: 21.99,
+      },
+      { code: "125", name: "Caipifruta (Vodka Smirnoff)", price: 23.99 },
       {
         code: "129",
         name: {
@@ -697,7 +742,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "Caipifruta (Vodka Importée)",
           it: "Caipifruta (Vodka Importata)",
         },
-        price: 25.99,
+        price: 26.99,
       },
       {
         code: "130",
@@ -708,7 +753,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "Caipifruta Sans Alcool",
           it: "Caipifruta Analcolica",
         },
-        price: 17.99,
+        price: 18.99,
       },
       {
         code: "133",
@@ -720,7 +765,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "Bacardi, Menthe et Eau Gazeuse",
           it: "Bacardi, Menta e Acqua Frizzante",
         },
-        price: 18.99,
+        price: 19.99,
       },
       {
         code: "122",
@@ -732,7 +777,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "Smirnoff, Tonic et Citron Jaune",
           it: "Smirnoff, Tonica e Limone Siciliano",
         },
-        price: 26.99,
+        price: 27.99,
       },
       {
         code: "135",
@@ -744,7 +789,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "Tanqueray, Tonic et Citron Jaune",
           it: "Tanqueray, Tonica e Limone Siciliano",
         },
-        price: 24.99,
+        price: 25.99,
       },
       {
         code: "127",
@@ -756,7 +801,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "Gin, Redbull Tropical et Orange",
           it: "Gin, Redbull Tropical e Arancia",
         },
-        price: 34.99,
+        price: 35.99,
       },
       {
         code: "195",
@@ -768,7 +813,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "Bière Long Neck et Caipifruta",
           it: "Birra Long Neck e Caipifruta",
         },
-        price: 34.99,
+        price: 35.99,
       },
       {
         code: "197",
@@ -780,7 +825,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "Vodka, Jus d'Orange, Liqueur de Pêche et Groseille",
           it: "Vodka, Succo d'Arancia, Liquore alla Pesca e Ribes",
         },
-        price: 29.99,
+        price: 30.99,
       },
       {
         code: "198",
@@ -792,7 +837,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "Gin, Redbull, Pastèque et Menthe",
           it: "Gin, Redbull, Anguria e Menta",
         },
-        price: 34.99,
+        price: 35.99,
       },
     ],
   },
@@ -800,12 +845,12 @@ export const menuCategories: MenuCategory[] = [
     id: "para-dividir",
     nameKey: "paraDividir",
     items: [
-      { code: "150", name: "J. Walker Red + 2 Red Bull's", price: 229.99 },
-      { code: "151", name: "Old Parr + 2 Red Bull's", price: 289.99 },
-      { code: "152", name: "Black White + 2 Red Bull's", price: 169.99 },
-      { code: "153", name: "Smirnoff + 2 Red Bull's", price: 149.99 },
-      { code: "154", name: "Absolut + 2 Red Bull's", price: 259.99 },
-      { code: "155", name: "Ciroc + 2 Red Bull's", price: 289.99 },
+      { code: "150", name: "J. Walker Red + 2 Red Bull's", price: 239.99 },
+      { code: "151", name: "Old Parr + 2 Red Bull's", price: 309.99 },
+      { code: "152", name: "Black White + 2 Red Bull's", price: 189.99 },
+      { code: "153", name: "Smirnoff + 2 Red Bull's", price: 169.99 },
+      { code: "154", name: "Absolut + 2 Red Bull's", price: 269.99 },
+      { code: "155", name: "Ciroc + 2 Red Bull's", price: 329.99 },
     ],
   },
   {
@@ -821,7 +866,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "Tequila Or",
           it: "Tequila Oro",
         },
-        price: 24.99,
+        price: 29.99,
       },
       {
         code: "171",
@@ -832,7 +877,30 @@ export const menuCategories: MenuCategory[] = [
           fr: "Tequila Argent",
           it: "Tequila Argento",
         },
-        price: 24.99,
+        price: 29.99,
+      },
+      {
+        code: "000",
+        name: {
+          "pt-BR": "Vinho Garrafa",
+          en: "Wine (Bottle)",
+          es: "Vino (Botella)",
+          fr: "Vin (Bouteille)",
+          it: "Vino (Bottiglia)",
+        },
+        note: {
+          "pt-BR": "consultar opções",
+          en: "ask for options",
+          es: "consultar opciones",
+          fr: "demander les options",
+          it: "chiedi le opzioni",
+        },
+        price: 99.99,
+      },
+      {
+        code: "000",
+        name: "Chandon",
+        price: 279.99,
       },
     ],
   },
@@ -840,60 +908,61 @@ export const menuCategories: MenuCategory[] = [
     id: "dose-pro-santo",
     nameKey: "doseProSanto",
     items: [
-      { code: "110", name: "Montila Carta Branca", price: 10.99 },
-      { code: "111", name: "Montila Cristal", price: 10.99 },
-      { code: "112", name: "Bacardi Carta Branca", price: 10.99 },
-      { code: "114", name: "Conhaque Domeq", price: 10.99 },
-      { code: "115", name: "Campari", price: 10.99 },
-      { code: "116", name: "Martini Bianco", price: 10.99 },
-      { code: "117", name: "Martini Rosé", price: 10.99 },
+      { code: "110", name: "Montila Carta Branca", price: 11.99 },
+      { code: "111", name: "Montila Cristal", price: 11.99 },
+      { code: "112", name: "Bacardi Carta Branca", price: 11.99 },
+      { code: "114", name: "Conhaque Domeq", price: 11.99 },
+      { code: "115", name: "Campari", price: 11.99 },
+      { code: "116", name: "Martini Bianco", price: 11.99 },
+      { code: "117", name: "Martini Rosé", price: 11.99 },
+      { code: "000", name: "Licor 43", price: 29.99 },
     ],
   },
   {
     id: "vodka-e-gin",
     nameKey: "vodkaEGin",
     items: [
-      { code: "166", name: "Smirnoff Ice", price: 15.99 },
-      { code: "166", name: "Beats Senses", price: 15.99 },
+      { code: "166", name: "Smirnoff Ice", price: 18.99 },
+      { code: "166", name: "Beats Senses", price: 17.99 },
       {
         code: "161",
         name: { "pt-BR": "Smirnoff (Dose)", en: "Smirnoff (Shot)", es: "Smirnoff (Dosis)", fr: "Smirnoff (Dose)", it: "Smirnoff (Dose)" },
-        price: 14.99,
+        price: 15.99,
       },
       {
-        code: "162",
+        code: "167",
         name: { "pt-BR": "Smirnoff (Garrafa)", en: "Smirnoff (Bottle)", es: "Smirnoff (Botella)", fr: "Smirnoff (Bouteille)", it: "Smirnoff (Bottiglia)" },
-        price: 124.99,
+        price: 149.99,
       },
       {
         code: "163",
         name: { "pt-BR": "Absolut (Dose)", en: "Absolut (Shot)", es: "Absolut (Dosis)", fr: "Absolut (Dose)", it: "Absolut (Dose)" },
-        price: 21.99,
+        price: 23.99,
       },
       {
         code: "164",
         name: { "pt-BR": "Absolut (Garrafa)", en: "Absolut (Bottle)", es: "Absolut (Botella)", fr: "Absolut (Bouteille)", it: "Absolut (Bottiglia)" },
-        price: 239.99,
+        price: 249.99,
       },
       {
         code: "165",
         name: { "pt-BR": "Ciroc (Garrafa)", en: "Ciroc (Bottle)", es: "Ciroc (Botella)", fr: "Ciroc (Bouteille)", it: "Ciroc (Bottiglia)" },
-        price: 269.99,
+        price: 299.99,
       },
       {
         code: "131",
         name: { "pt-BR": "Tanqueray (Dose)", en: "Tanqueray (Shot)", es: "Tanqueray (Dosis)", fr: "Tanqueray (Dose)", it: "Tanqueray (Dose)" },
-        price: 21.99,
+        price: 24.99,
       },
       {
         code: "137",
         name: { "pt-BR": "Tanqueray (Garrafa)", en: "Tanqueray (Bottle)", es: "Tanqueray (Botella)", fr: "Tanqueray (Bouteille)", it: "Tanqueray (Bottiglia)" },
-        price: 269.99,
+        price: 289.99,
       },
       {
         code: "132",
         name: { "pt-BR": "Gin Nacional (Dose)", en: "Gin Nacional (Shot)", es: "Gin Nacional (Dosis)", fr: "Gin Nacional (Dose)", it: "Gin Nacional (Dose)" },
-        price: 14.99,
+        price: 16.99,
       },
 
     ],
@@ -911,7 +980,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "Eau Plate",
           it: "Acqua Naturale",
         },
-        price: 6.99,
+        price: 7.99,
       },
       {
         code: "102",
@@ -922,7 +991,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "Eau Gazeuse",
           it: "Acqua Frizzante",
         },
-        price: 6.99,
+        price: 8.99,
       },
       {
         code: "103",
@@ -933,7 +1002,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "Eau de Coco",
           it: "Acqua di Cocco",
         },
-        price: 7.99,
+        price: 9.99,
       },
       {
         code: "105",
@@ -951,7 +1020,7 @@ export const menuCategories: MenuCategory[] = [
           fr: "demander les saveurs",
           it: "chiedi i sabori",
         },
-        price: 12.99,
+        price: 13.99,
       },
       {
         code: "106",
@@ -969,12 +1038,289 @@ export const menuCategories: MenuCategory[] = [
           fr: "demander les saveurs",
           it: "chiedi i sabori",
         },
-        price: 20.99,
+        price: 22.99,
       },
-      { code: "182", name: "Tônica Antártica", price: 8.99 },
-      { code: "107", name: "Schweppes Citrus", price: 9.99 },
-      { code: "100", name: "Red Bull", price: 18.99 },
-      { code: "183", name: "Redbull Tropical / Melancia", price: 20.99 },
+      { code: "182", name: "Tônica Antártica", price: 9.99 },
+      { code: "107", name: "Schweppes Citrus", price: 10.99 },
+      { code: "100", name: "Red Bull", price: 19.99 },
+      { code: "183", name: "Redbull Tropical / Melancia", price: 21.99 },
+    ],
+  },
+  {
+    id: "matuta",
+    nameKey: "matuta",
+    hasDoseGarrafa: true,
+    items: [
+      {
+        code: "000",
+        name: {
+          "pt-BR": "Cristal",
+          en: "Cristal",
+          es: "Cristal",
+          fr: "Cristal",
+          it: "Cristal",
+        },
+        priceDose: 8.99,
+        priceGarrafa: 34.99,
+        price: 8.99,
+      },
+      {
+        code: "000",
+        name: {
+          "pt-BR": "Umburana",
+          en: "Umburana",
+          es: "Umburana",
+          fr: "Umburana",
+          it: "Umburana",
+        },
+        priceDose: 10.99,
+        priceGarrafa: 34.99,
+        price: 10.99,
+      },
+      {
+        code: "000",
+        name: {
+          "pt-BR": "Mel e Limão",
+          en: "Honey and Lemon",
+          es: "Miel y Limón",
+          fr: "Miel et Citron",
+          it: "Miele e Limone",
+        },
+        priceGarrafa: 34.99,
+        price: 0,
+      },
+      {
+        code: "000",
+        name: {
+          "pt-BR": "Canela",
+          en: "Cinnamon",
+          es: "Canela",
+          fr: "Cannelle",
+          it: "Cannella",
+        },
+        priceGarrafa: 34.99,
+        price: 0,
+      },
+      {
+        code: "000",
+        name: {
+          "pt-BR": "Banana",
+          en: "Banana",
+          es: "Banana",
+          fr: "Banane",
+          it: "Banana",
+        },
+        priceGarrafa: 34.99,
+        price: 0,
+      },
+      {
+        code: "000",
+        name: {
+          "pt-BR": "Maçã Verde",
+          en: "Green Apple",
+          es: "Manzana Verde",
+          fr: "Pomme Verte",
+          it: "Mela Verde",
+        },
+        priceGarrafa: 34.99,
+        price: 0,
+      },
+    ],
+  },
+  {
+    id: "happy-do-vei",
+    nameKey: "happyDoVei",
+    promotionSchedule: {
+      weekdays: {
+        "pt-BR": "Seg a Sáb",
+        en: "Mon to Sat",
+        es: "Lun a Sáb",
+        fr: "Lun au Sam",
+        it: "Lun al Sab",
+      },
+      weekdaysUntil: {
+        "pt-BR": "até 19h",
+        en: "until 7 PM",
+        es: "hasta las 19h",
+        fr: "jusqu'à 19h",
+        it: "fino alle 19h",
+      },
+      weekends: {
+        "pt-BR": "Dom e Feriados",
+        en: "Sun and Holidays",
+        es: "Dom y Feriados",
+        fr: "Dim et Jours Fériés",
+        it: "Dom e Festivi",
+      },
+      weekendsUntil: {
+        "pt-BR": "até 17h",
+        en: "until 5 PM",
+        es: "hasta las 17h",
+        fr: "jusqu'à 17h",
+        it: "fino alle 17h",
+      },
+      disclaimer: {
+        "pt-BR": "Podendo variar em feriados e eventos especiais",
+        en: "May vary on holidays and special events",
+        es: "Puede variar en feriados y eventos especiales",
+        fr: "Peut varier lors des jours fériés et événements spéciaux",
+        it: "Può variare durante i giorni festivi ed eventi speciali",
+      },
+    },
+    items: [
+      {
+        code: "204",
+        name: "Budweiser 600ml",
+        note: {
+          "pt-BR": "Preço promocional",
+          en: "Promotional price",
+          es: "Precio promocional",
+          fr: "Prix promotionnel",
+          it: "Prezzo promozionale",
+        },
+        price: 8.99,
+      },
+      {
+        code: "161",
+        name: {
+          "pt-BR": "Smirnoff (Dose)",
+          en: "Smirnoff (Shot)",
+          es: "Smirnoff (Dosis)",
+          fr: "Smirnoff (Dose)",
+          it: "Smirnoff (Dose)",
+        },
+        note: {
+          "pt-BR": "Preço promocional",
+          en: "Promotional price",
+          es: "Precio promocional",
+          fr: "Prix promotionnel",
+          it: "Prezzo promozionale",
+        },
+        price: 5.99,
+      },
+      {
+        code: "091",
+        name: {
+          "pt-BR": "Black White (Dose)",
+          en: "Black White (Shot)",
+          es: "Black White (Dosis)",
+          fr: "Black White (Dose)",
+          it: "Black White (Dose)",
+        },
+        note: {
+          "pt-BR": "Preço promocional",
+          en: "Promotional price",
+          es: "Precio promocional",
+          fr: "Prix promotionnel",
+          it: "Prezzo promozionale",
+        },
+        price: 6.99,
+      },
+      {
+        code: "120",
+        name: "Caipirinha",
+        note: {
+          "pt-BR": "Preço promocional",
+          en: "Promotional price",
+          es: "Precio promocional",
+          fr: "Prix promotionnel",
+          it: "Prezzo promozionale",
+        },
+        price: 7.99,
+      },
+      {
+        code: "000",
+        name: "Caipifruta",
+        note: {
+          "pt-BR": "Preço promocional",
+          en: "Promotional price",
+          es: "Precio promocional",
+          fr: "Prix promotionnel",
+          it: "Prezzo promozionale",
+        },
+        price: 9.99,
+      },
+    ],
+  },
+  {
+    id: "matuta",
+    nameKey: "matuta",
+    hasDoseGarrafa: true,
+    items: [
+      {
+        code: "000",
+        name: {
+          "pt-BR": "Cristal",
+          en: "Cristal",
+          es: "Cristal",
+          fr: "Cristal",
+          it: "Cristal",
+        },
+        priceDose: 8.99,
+        priceGarrafa: 34.99,
+        price: 8.99,
+      },
+      {
+        code: "000",
+        name: {
+          "pt-BR": "Umburana",
+          en: "Umburana",
+          es: "Umburana",
+          fr: "Umburana",
+          it: "Umburana",
+        },
+        priceDose: 10.99,
+        priceGarrafa: 34.99,
+        price: 10.99,
+      },
+      {
+        code: "000",
+        name: {
+          "pt-BR": "Mel e Limão",
+          en: "Honey and Lemon",
+          es: "Miel y Limón",
+          fr: "Miel et Citron",
+          it: "Miele e Limone",
+        },
+        priceGarrafa: 34.99,
+        price: 0,
+      },
+      {
+        code: "000",
+        name: {
+          "pt-BR": "Canela",
+          en: "Cinnamon",
+          es: "Canela",
+          fr: "Cannelle",
+          it: "Cannella",
+        },
+        priceGarrafa: 34.99,
+        price: 0,
+      },
+      {
+        code: "000",
+        name: {
+          "pt-BR": "Banana",
+          en: "Banana",
+          es: "Banana",
+          fr: "Banane",
+          it: "Banana",
+        },
+        priceGarrafa: 34.99,
+        price: 0,
+      },
+      {
+        code: "000",
+        name: {
+          "pt-BR": "Maçã Verde",
+          en: "Green Apple",
+          es: "Manzana Verde",
+          fr: "Pomme Verte",
+          it: "Mela Verde",
+        },
+        priceGarrafa: 34.99,
+        price: 0,
+      },
     ],
   },
 ];
@@ -1031,7 +1377,7 @@ export const businessInfo = {
       },
     },
   ],
-  couvert: { regular: 12.0, special: 15.0 },
+  couvert: { regular: 15.0, special: 20.0 },
   serviceFee: 10,
   acceptedCards: ["visa", "mastercard", "hipercard", "elo"],
   noChecks: true,
