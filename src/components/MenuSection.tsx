@@ -1,7 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/context/LanguageContext";
-import { MenuCategory, MenuItem, LocalizedString } from "@/data/menu";
+import { MenuCategory, MenuItem, LocalizedString, PromotionSchedule } from "@/data/menu";
 import { Translation, Locale } from "@/data/translations";
 
 function formatPrice(price: number) {
@@ -11,6 +11,57 @@ function formatPrice(price: number) {
 function getLocalizedString(str: LocalizedString, locale: Locale): string {
   if (typeof str === "string") return str;
   return str[locale] || str["pt-BR"];
+}
+
+function PromotionScheduleBadge({
+  schedule,
+  locale,
+}: {
+  schedule: PromotionSchedule;
+  locale: Locale;
+}) {
+  const label =
+    locale === "pt-BR" ? "Horários da Promoção" :
+    locale === "en"    ? "Promotion Hours" :
+    locale === "es"    ? "Horarios de la Promoción" :
+    locale === "fr"    ? "Horaires de la Promotion" :
+                         "Orari della Promozione";
+
+  return (
+    <div className="mb-5 rounded-xl overflow-hidden border border-yellow-400/40 bg-gradient-to-br from-yellow-400/20 to-orange-400/10">
+      {/* Header */}
+      <div className="flex items-center gap-2 px-4 py-2.5 bg-yellow-400/30">
+        <span className="text-xl">🕐</span>
+        <span className="text-sm font-black uppercase tracking-widest text-yellow-900">
+          {label}
+        </span>
+      </div>
+      {/* Schedule rows */}
+      <div className="px-4 py-3 flex flex-col gap-1.5 text-sm font-body">
+        <div className="flex items-center justify-between gap-3">
+          <span className="font-semibold text-yellow-900">
+            {getLocalizedString(schedule.weekdays, locale)}
+          </span>
+          <span className="text-yellow-800 font-bold bg-yellow-300/50 px-2 py-0.5 rounded-full text-xs">
+            {getLocalizedString(schedule.weekdaysUntil, locale)}
+          </span>
+        </div>
+        <div className="flex items-center justify-between gap-3">
+          <span className="font-semibold text-yellow-900">
+            {getLocalizedString(schedule.weekends, locale)}
+          </span>
+          <span className="text-yellow-800 font-bold bg-yellow-300/50 px-2 py-0.5 rounded-full text-xs">
+            {getLocalizedString(schedule.weekendsUntil, locale)}
+          </span>
+        </div>
+        {schedule.disclaimer && (
+          <p className="mt-1 text-xs text-yellow-800/70 italic">
+            * {getLocalizedString(schedule.disclaimer, locale)}
+          </p>
+        )}
+      </div>
+    </div>
+  );
 }
 
 function MenuItemRow({
@@ -96,13 +147,13 @@ export default function MenuSection({ category }: { category: MenuCategory }) {
       {/* Category Header */}
       <div className="flex items-center mb-6 relative px-2 sm:px-0">
         <div className="relative inline-flex items-center justify-center min-w-[240px] sm:min-w-[300px]">
-          <div 
+          <div
             className="absolute inset-0 w-full h-full pointer-events-none opacity-95"
-            style={{ 
+            style={{
               backgroundImage: 'url("/images/brush.svg")',
-              backgroundSize: '100% 100%',
-              backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center'
+              backgroundSize: "100% 100%",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
             }}
           ></div>
           <h2 className="relative z-10 px-12 py-5 text-2xl sm:text-3xl font-heading font-bold text-white uppercase tracking-tight text-center">
@@ -113,6 +164,14 @@ export default function MenuSection({ category }: { category: MenuCategory }) {
 
       {/* Items */}
       <div className="bg-botequim-card border-0 rounded-2xl p-4 sm:p-6 shadow-[0_4px_6px_rgba(0,0,0,0.05)] w-full relative">
+        {/* Promotion schedule badge */}
+        {category.promotionSchedule && (
+          <PromotionScheduleBadge
+            schedule={category.promotionSchedule}
+            locale={locale}
+          />
+        )}
+
         {category.hasDoseGarrafa && (
           <div className="flex justify-end pr-2 pb-3 mb-2 border-b border-dashed border-[#D1D1D1]">
             <div className="grid grid-cols-[80px_80px] sm:grid-cols-[100px_100px] gap-2 text-[10px] font-black uppercase tracking-widest text-botequim-muted text-center">
